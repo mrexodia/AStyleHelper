@@ -17,6 +17,17 @@ namespace AStyleWhore
             InitializeComponent();
         }
 
+        private string[] GetFilesInDir(string dir, string pattern)
+        {
+            string[] patterns = pattern.Split(new char[] {';'}, StringSplitOptions.RemoveEmptyEntries);
+            if (patterns.Length == 0)
+                return Directory.GetFiles(dir, "*", SearchOption.AllDirectories);
+            string[] retlist = new string[] {};
+            foreach (string searchPattern in patterns)
+                retlist = retlist.Concat(Directory.GetFiles(dir, searchPattern, SearchOption.AllDirectories)).ToArray();
+            return retlist;
+        }
+
         private void btnAStyleDirectory_Click(object sender, EventArgs e)
         {
             //ask if the users wants to format
@@ -25,9 +36,13 @@ namespace AStyleWhore
                 return;
 
             //get a list of source files
-            string[] headers = Directory.GetFiles(currentDir, "*.h", SearchOption.AllDirectories);
-            string[] cpps = Directory.GetFiles(currentDir, "*.cpp", SearchOption.AllDirectories);
-            string[] sources = headers.Concat(cpps).ToArray();
+            string[] sources = GetFilesInDir(currentDir, "*.c;*.h;*.cpp;*.hpp");
+
+            if (sources.Length == 0)
+            {
+                MessageBox.Show("No source files found!");
+                return;
+            }
 
             //format the files
             string errors = "";
