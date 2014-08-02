@@ -3,8 +3,8 @@ AStyleWhore is a very simple program with a very simple task: auto-format all *.
 
 ##Usage
 - Copy AStyleWhore.exe & AStyle.dll to your project main directory.
-- Run AStyleWhore.exe
-- Click 'AStyle Current Directory' to format your project
+- Run AStyleWhore.exe.
+- Click 'AStyle Current Directory' to format your project.
 - Enjoy!
 
 ##License
