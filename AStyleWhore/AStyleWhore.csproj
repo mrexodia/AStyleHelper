@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AStyleInterface.cs" />
+    <Compile Include="AStyleWhore.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
