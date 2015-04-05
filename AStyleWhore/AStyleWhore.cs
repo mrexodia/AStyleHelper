@@ -22,34 +22,46 @@ namespace AStyleWhore
         public static string AStyleDirectory(string dir, ref bool changesMade, string pattern = "*.c;*.h;*.cpp;*.hpp", string options = "style=allman, convert-tabs")
         {
             changesMade = false;
-            //get a list of source files
+
+            // Get a list of source files
             string[] sources = GetFilesInDir(dir, pattern);
 
-            if (sources.Length == 0)
-            {
+            if (sources.Length <= 0)
                 return "No source files found!";
-            }
 
-            //format the files
+            // Format the files
             string errors = "";
+
             AStyleInterface AStyle = new AStyleInterface();
+
             foreach (string file in sources)
             {
-                if (file.Contains("bin\\") || file.Contains("release\\")) //skip Qt build files
-                    continue;
-                string fileText = File.ReadAllText(file);
-                string formatText = AStyle.FormatSource(fileText, options);
-                if (formatText == String.Empty)
+                try
                 {
-                    errors += "Cannot format " + file + "\r\n";
-                    continue;
+                    // Skip Qt build files
+                    if (file.Contains("bin\\") || file.Contains("release\\"))
+                        continue;
+
+                    string fileText = File.ReadAllText(file);
+                    string formatText = AStyle.FormatSource(fileText, options);
+
+                    if (formatText == String.Empty)
+                    {
+                        errors += "Cannot format " + file + "\r\n";
+                        continue;
+                    }
+                    if (!fileText.Equals(formatText))
+                    {
+                        changesMade = true;
+                        File.WriteAllText(file, formatText);
+                    }
                 }
-                if (!fileText.Equals(formatText))
+                catch(Exception)
                 {
-                    changesMade = true;
-                    File.WriteAllText(file, formatText);
+                    // Ignored. Any files that can't be read or written will be skipped.
                 }
             }
+
             return errors;
         }
     }
