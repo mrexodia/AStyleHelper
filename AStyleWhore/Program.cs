@@ -18,7 +18,7 @@ namespace AStyleWhore
             {
                 if (args[0].Equals("Silent", StringComparison.CurrentCultureIgnoreCase))
                 {
-                    string currentDir = AppDomain.CurrentDomain.BaseDirectory;
+                    string currentDir = Environment.CurrentDirectory;
                     bool changesMade = false;
                     AStyleWhore.AStyleDirectory(currentDir, ref changesMade);
                     if (changesMade)
