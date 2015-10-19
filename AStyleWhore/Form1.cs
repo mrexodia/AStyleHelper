@@ -20,7 +20,7 @@ namespace AStyleWhore
         private void btnAStyleDirectory_Click(object sender, EventArgs e)
         {
             //ask if the users wants to format
-            string currentDir = AppDomain.CurrentDomain.BaseDirectory;
+            string currentDir = Environment.CurrentDirectory;
             if (MessageBox.Show(currentDir, "Do you want to AStyle this directory?", MessageBoxButtons.YesNo) == DialogResult.No)
                 return;
 
