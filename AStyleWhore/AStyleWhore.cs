@@ -39,7 +39,7 @@ namespace AStyleWhore
                 try
                 {
                     // Skip Qt build files
-                    if (file.Contains("bin\\") || file.Contains("release\\"))
+                    if (file.Contains("bin\\") || file.Contains("release\\") || file.Contains("gui_build\\"))
                         continue;
 
                     string fileText = File.ReadAllText(file);
