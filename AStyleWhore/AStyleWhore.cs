@@ -19,7 +19,7 @@ namespace AStyleWhore
             return retlist;
         }
 
-        public static string AStyleDirectory(string dir, ref bool changesMade, string pattern = "*.c;*.h;*.cpp;*.hpp", string options = "style=allman, convert-tabs")
+        public static string AStyleDirectory(string dir, ref bool changesMade, string pattern = "*.c;*.h;*.cpp;*.hpp", string options = "style=allman, convert-tabs, align-pointer=type, align-reference=middle, indent=spaces, indent-namespaces, indent-col1-comments, pad-oper, unpad-paren, keep-one-line-blocks, close-templates")
         {
             changesMade = false;
 
@@ -43,7 +43,7 @@ namespace AStyleWhore
                         continue;
 
                     string fileText = File.ReadAllText(file);
-                    string formatText = AStyle.FormatSource(fileText, options);
+                    string formatText = AStyle.FormatSource(fileText, options).Replace("\r\n", "\n").Replace("\n", "\r\n");
 
                     if (formatText == String.Empty)
                     {
