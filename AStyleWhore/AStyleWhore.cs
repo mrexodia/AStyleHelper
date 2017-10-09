@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.IO;
 using System.Diagnostics;
+using AStyleWhore.Properties;
 
 namespace AStyleWhore
 {
@@ -42,8 +43,10 @@ namespace AStyleWhore
             }
         }
 
-        public static string AStyleDirectory(string dir, ref bool changesMade, string pattern = "*.c;*.h;*.cpp;*.hpp", string options = "style=allman, convert-tabs, align-pointer=type, align-reference=middle, indent=spaces, indent-namespaces, indent-col1-comments, pad-oper, unpad-paren, keep-one-line-blocks, close-templates")
+        public static string AStyleDirectory(string dir, ref bool changesMade)
         {
+            var pattern = Settings.Default.Pattern;
+            var options = Settings.Default.Options;
             changesMade = false;
 
             // Get a list of source files
@@ -53,7 +56,7 @@ namespace AStyleWhore
                 return "No source files found!";
 
             // Format the files
-            string errors = "";
+            var output = new StringBuilder();
 
             AStyleInterface AStyle = new AStyleInterface();
 
@@ -66,7 +69,7 @@ namespace AStyleWhore
 
                     if (formatText == String.Empty)
                     {
-                        errors += "Cannot format " + file + "\r\n";
+                        output.AppendLine("Cannot format " + file);
                         continue;
                     }
                     if (!fileText.Equals(formatText))
@@ -81,7 +84,7 @@ namespace AStyleWhore
                 }
             }
 
-            return errors;
+            return output.ToString();
         }
     }
 }

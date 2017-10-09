@@ -22,5 +22,25 @@ namespace AStyleWhore.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("*.c;*.h;*.cpp;*.hpp")]
+        public string Pattern {
+            get {
+                return ((string)(this["Pattern"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("style=allman, convert-tabs, align-pointer=type, align-reference=middle, indent=sp" +
+            "aces, indent-namespaces, indent-col1-comments, pad-oper, unpad-paren, keep-one-l" +
+            "ine-blocks, close-templates")]
+        public string Options {
+            get {
+                return ((string)(this["Options"]));
+            }
+        }
     }
 }

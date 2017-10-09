@@ -1,7 +1,12 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="AStyleWhore.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="Pattern" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">*.c;*.h;*.cpp;*.hpp</Value>
+    </Setting>
+    <Setting Name="Options" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">style=allman, convert-tabs, align-pointer=type, align-reference=middle, indent=spaces, indent-namespaces, indent-col1-comments, pad-oper, unpad-paren, keep-one-line-blocks, close-templates</Value>
+    </Setting>
+  </Settings>
 </SettingsFile>
