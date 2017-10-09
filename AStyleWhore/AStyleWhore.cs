@@ -59,7 +59,6 @@ namespace AStyleWhore
 
             foreach (string file in sources)
             {
-                File.AppendAllText("formatted.txt", file + "\n");
                 try
                 {
                     string fileText = File.ReadAllText(file);
