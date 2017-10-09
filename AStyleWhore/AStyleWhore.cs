@@ -5,6 +5,7 @@ using System.Text;
 using System.IO;
 using System.Diagnostics;
 using AStyleWhore.Properties;
+using System.Text.RegularExpressions;
 
 namespace AStyleWhore
 {
@@ -21,7 +22,6 @@ namespace AStyleWhore
             return retlist;
         }
 
-        //https://stackoverflow.com/a/206347
         private static string[] GitLsFiles(string dir, string pattern)
         {
             try
@@ -43,10 +43,11 @@ namespace AStyleWhore
             }
         }
 
-        public static string AStyleDirectory(string dir, ref bool changesMade)
+        public static string AStyleDirectory(string dir, bool writeChanges, out bool changesMade)
         {
             var pattern = Settings.Default.Pattern;
             var options = Settings.Default.Options;
+            var ignore = Settings.Default.Ignore.Split(new[] { ';' }, StringSplitOptions.RemoveEmptyEntries);
             changesMade = false;
 
             // Get a list of source files
@@ -58,12 +59,14 @@ namespace AStyleWhore
             // Format the files
             var output = new StringBuilder();
 
-            AStyleInterface AStyle = new AStyleInterface();
-
+            var AStyle = new AStyleInterface();
             foreach (string file in sources)
             {
                 try
                 {
+                    if (ignore.Any(p => Regex.IsMatch(file, p)))
+                        continue;
+
                     string fileText = File.ReadAllText(file);
                     string formatText = AStyle.FormatSource(fileText, options).Replace("\r\n", "\n").Replace("\n", "\r\n");
 
@@ -75,10 +78,13 @@ namespace AStyleWhore
                     if (!fileText.Equals(formatText))
                     {
                         changesMade = true;
-                        File.WriteAllText(file, formatText);
+                        if (writeChanges)
+                            File.WriteAllText(file, formatText);
+                        else
+                            output.AppendLine(file);
                     }
                 }
-                catch(Exception)
+                catch (Exception)
                 {
                     // Ignored. Any files that can't be read or written will be skipped.
                 }

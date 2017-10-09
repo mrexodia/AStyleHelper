@@ -42,5 +42,14 @@ namespace AStyleWhore.Properties {
                 return ((string)(this["Options"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Ignore {
+            get {
+                return ((string)(this["Ignore"]));
+            }
+        }
     }
 }

@@ -19,10 +19,27 @@ namespace AStyleWhore
                 if (args[0].Equals("Silent", StringComparison.CurrentCultureIgnoreCase))
                 {
                     string currentDir = Environment.CurrentDirectory;
-                    bool changesMade = false;
-                    AStyleWhore.AStyleDirectory(currentDir, ref changesMade);
+                    bool changesMade;
+                    AStyleWhore.AStyleDirectory(currentDir, true, out changesMade);
                     if (changesMade)
                         return 1;
+                }
+                else if(args[0].Equals("Check", StringComparison.CurrentCultureIgnoreCase))
+                {
+                    string currentDir = Environment.CurrentDirectory;
+                    bool changesMade;
+                    var result = AStyleWhore.AStyleDirectory(currentDir, false, out changesMade);
+                    //AttachConsole(-1);
+                    if (changesMade)
+                    {
+                        Console.Error.WriteLine("Nonconforming files:");
+                        Console.Error.Write(result);
+                        return 1;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Formatting fully conforming!");
+                    }
                 }
                 else
                 {
@@ -35,5 +52,11 @@ namespace AStyleWhore
             Application.Run(new MainForm());
             return 0;
         }
+
+        [System.Runtime.InteropServices.DllImport("kernel32.dll")]
+        private static extern bool AttachConsole(int pid);
+
+        [System.Runtime.InteropServices.DllImport("kernel32.dll", SetLastError = true)]
+        private static extern bool FreeConsole();
     }
 }

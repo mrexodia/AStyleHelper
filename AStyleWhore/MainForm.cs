@@ -24,8 +24,8 @@ namespace AStyleWhore
             if (MessageBox.Show(currentDir, "Do you want to AStyle this directory?", MessageBoxButtons.YesNo) == DialogResult.No)
                 return;
 
-            bool changesMade = false;
-            string errors = AStyleWhore.AStyleDirectory(currentDir, ref changesMade);
+            bool changesMade;
+            string errors = AStyleWhore.AStyleDirectory(currentDir, true, out changesMade);
 
             //finalize
             if (errors.Length > 0)
