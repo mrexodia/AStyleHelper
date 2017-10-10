@@ -8,7 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.IO;
 
-namespace AStyleWhore
+namespace AStyleHelper
 {
     public partial class MainForm : Form
     {
@@ -25,7 +25,7 @@ namespace AStyleWhore
                 return;
 
             bool changesMade;
-            string errors = AStyleWhore.AStyleDirectory(currentDir, true, out changesMade);
+            string errors = AStyleHelper.AStyleDirectory(currentDir, true, out changesMade);
 
             //finalize
             if (errors.Length > 0)

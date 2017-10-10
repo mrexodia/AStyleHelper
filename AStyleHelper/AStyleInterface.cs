@@ -75,7 +75,7 @@ public class AStyleInterface
         }
         catch (DllNotFoundException)
         {
-            MessageBox.Show("Cannot load native library: " + dllName + "\r\n\r\nAStyleWhore will be terminated!");
+            MessageBox.Show("Cannot load native library: " + dllName + "\r\n\r\nAStyleHelper will be terminated!");
             Environment.Exit(1);
         }
         catch (Exception e)
@@ -106,7 +106,7 @@ public class AStyleInterface
         }
         catch (DllNotFoundException)
         {
-            MessageBox.Show("Cannot load native library: " + dllName + "\r\n\r\nAStyleWhore will be terminated!");
+            MessageBox.Show("Cannot load native library: " + dllName + "\r\n\r\nAStyleHelper will be terminated!");
             Environment.Exit(1);
         }
         catch (Exception e)

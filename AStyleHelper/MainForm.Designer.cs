@@ -1,4 +1,4 @@
-﻿namespace AStyleWhore
+﻿namespace AStyleHelper
 {
     partial class MainForm
     {
@@ -54,7 +54,7 @@
             this.MinimizeBox = false;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "AStyleWhore";
+            this.Text = "AStyleHelper";
             this.ResumeLayout(false);
 
         }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Windows.Forms;
 using System.IO;
 
-namespace AStyleWhore
+namespace AStyleHelper
 {
     static class Program
     {
@@ -20,7 +20,7 @@ namespace AStyleWhore
                 {
                     string currentDir = Environment.CurrentDirectory;
                     bool changesMade;
-                    AStyleWhore.AStyleDirectory(currentDir, true, out changesMade);
+                    AStyleHelper.AStyleDirectory(currentDir, true, out changesMade);
                     if (changesMade)
                         return 1;
                 }
@@ -28,7 +28,7 @@ namespace AStyleWhore
                 {
                     string currentDir = Environment.CurrentDirectory;
                     bool changesMade;
-                    var result = AStyleWhore.AStyleDirectory(currentDir, false, out changesMade);
+                    var result = AStyleHelper.AStyleDirectory(currentDir, false, out changesMade);
                     //AttachConsole(-1);
                     if (changesMade)
                     {

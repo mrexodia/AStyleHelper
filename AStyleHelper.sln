@@ -1,7 +1,9 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AStyleWhore", "AStyleWhore\AStyleWhore.csproj", "{6F833DAD-ED85-4BA6-AF96-3C78F23D630C}"
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2000
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AStyleHelper", "AStyleHelper\AStyleHelper.csproj", "{6F833DAD-ED85-4BA6-AF96-3C78F23D630C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -16,5 +18,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5A23F6BE-D3EB-4F12-BD90-CC8EC8BF0ECB}
 	EndGlobalSection
 EndGlobal

@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.IO;
 using System.Diagnostics;
-using AStyleWhore.Properties;
+using AStyleHelper.Properties;
 using System.Text.RegularExpressions;
 
-namespace AStyleWhore
+namespace AStyleHelper
 {
-    class AStyleWhore
+    class AStyleHelper
     {
         private static string[] GetFilesInDir(string dir, string pattern)
         {
