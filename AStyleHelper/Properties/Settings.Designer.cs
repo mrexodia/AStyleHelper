@@ -25,7 +25,7 @@ namespace AStyleHelper.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("*.c;*.h;*.cpp;*.hpp")]
+        [global::System.Configuration.DefaultSettingValueAttribute("*.cs")]
         public string Pattern {
             get {
                 return ((string)(this["Pattern"]));
@@ -34,9 +34,9 @@ namespace AStyleHelper.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("style=allman, convert-tabs, align-pointer=type, align-reference=middle, indent=sp" +
-            "aces, indent-namespaces, indent-col1-comments, pad-oper, unpad-paren, keep-one-l" +
-            "ine-blocks, close-templates")]
+        [global::System.Configuration.DefaultSettingValueAttribute("style=allman, convert-tabs, align-pointer=type, align-reference=type, indent=spac" +
+            "es, indent-namespaces, indent-col1-comments, pad-oper, pad-header, keep-one-line" +
+            "-blocks, close-templates")]
         public string Options {
             get {
                 return ((string)(this["Options"]));
