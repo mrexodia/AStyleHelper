@@ -47,6 +47,7 @@ namespace AStyleHelper
         {
             var pattern = Settings.Default.Pattern;
             var options = Settings.Default.Options;
+            var license = Settings.Default.License.Replace("\r", "").Replace("\n", "\r\n");
             var ignore = Settings.Default.Ignore.Split(new[] { ';' }, StringSplitOptions.RemoveEmptyEntries);
             changesMade = false;
 
@@ -69,6 +70,9 @@ namespace AStyleHelper
 
                     string fileText = File.ReadAllText(file);
                     string formatText = AStyle.FormatSource(fileText, options).Replace("\r\n", "\n").Replace("\n", "\r\n");
+
+                    if (license.Length > 0 && !formatText.StartsWith(license))
+                        formatText = license + fileText;
 
                     if (formatText == String.Empty)
                     {

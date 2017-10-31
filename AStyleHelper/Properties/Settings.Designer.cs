@@ -51,5 +51,14 @@ namespace AStyleHelper.Properties {
                 return ((string)(this["Ignore"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string License {
+            get {
+                return ((string)(this["License"]));
+            }
+        }
     }
 }
