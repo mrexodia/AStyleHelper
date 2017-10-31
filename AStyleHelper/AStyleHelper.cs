@@ -61,6 +61,7 @@ namespace AStyleHelper
             var output = new StringBuilder();
 
             var AStyle = new AStyleInterface();
+            var encoding = new UTF8Encoding(false);
             foreach (string file in sources)
             {
                 try
@@ -68,8 +69,11 @@ namespace AStyleHelper
                     if (ignore.Any(p => Regex.IsMatch(file, p)))
                         continue;
 
-                    string fileText = File.ReadAllText(file);
-                    string formatText = AStyle.FormatSource(fileText, options).Replace("\r\n", "\n").Replace("\n", "\r\n");
+                    var fileText = encoding.GetString(File.ReadAllBytes(file));
+                    var formatText = AStyle.FormatSource(fileText, options)
+                        .Replace("\r\n", "\n")
+                        .Replace("\n", "\r\n")
+                        .Trim('\uFEFF', '\u200B');
 
                     if (license.Length > 0 && !formatText.StartsWith(license))
                         formatText = license + fileText;
@@ -83,12 +87,12 @@ namespace AStyleHelper
                     {
                         changesMade = true;
                         if (writeChanges)
-                            File.WriteAllText(file, formatText);
+                            File.WriteAllText(file, formatText, encoding);
                         else
                             output.AppendLine(file);
                     }
                 }
-                catch (Exception)
+                catch
                 {
                     // Ignored. Any files that can't be read or written will be skipped.
                 }
