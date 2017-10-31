@@ -31,7 +31,7 @@ namespace AStyleHelper
                 p.StartInfo.CreateNoWindow = true;
                 p.StartInfo.RedirectStandardOutput = true;
                 p.StartInfo.FileName = "git";
-                p.StartInfo.Arguments = "ls-files " + pattern.Replace(';', ' ');
+                p.StartInfo.Arguments = "ls-files --cached --others " + pattern.Replace(';', ' ');
                 p.Start();
                 var output = p.StandardOutput.ReadToEnd();
                 p.WaitForExit();
