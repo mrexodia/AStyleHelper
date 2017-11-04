@@ -1,6 +1,6 @@
 # AStyleHelper
 
-AStyleHelper is a very simple program with a very simple task: auto-format all *.cpp and *.h files in a project.
+AStyleHelper is a very simple program with a very simple task: auto-format all files in a git repository.
 
 ## Usage
 
