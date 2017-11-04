@@ -35,6 +35,8 @@ namespace AStyleHelper
                 p.Start();
                 var output = p.StandardOutput.ReadToEnd();
                 p.WaitForExit();
+                if (p.ExitCode != 0)
+                    return GetFilesInDir(dir, pattern);
                 return output.Split(new[] { '\n' }, StringSplitOptions.RemoveEmptyEntries);
             }
             catch
